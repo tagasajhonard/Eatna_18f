@@ -1,0 +1,107 @@
+details {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px;
+      background-color: #fff;
+     
+      border-radius: 8px;
+      box-shadow: 0 4px 6px gray;
+      width: 190px;
+    
+    }
+
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 5px 10px;
+    }
+
+    /* Burger icon style */
+    .burger {
+      display: block;
+      width: 30px;
+      height: 20px;
+      position: relative;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+    }
+
+    .burger div {
+      position: absolute;
+      background-color: #333;
+      height: 4px;
+      width: 100%;
+      border-radius: 4px;
+      transition: all 0.3s ease-in-out;
+    }
+    .icon{
+      width: 20px;
+      height: 20px;
+    }
+
+    .burger div:nth-child(1) {
+      top: 0;
+    }
+
+    .burger div:nth-child(2) {
+      top: 8px;
+    }
+
+    .burger div:nth-child(3) {
+      top: 16px;
+    }
+
+    details[open] summary .burger div:nth-child(1) {
+      transform: rotate(45deg);
+      top: 8px;
+    }
+
+    details[open] summary .burger div:nth-child(2) {
+      opacity: 0;
+    }
+
+    details[open] summary .burger div:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 8px;
+    }
+
+    details p {
+      margin-top: 10px;
+    }
+
+     ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+    li {
+      display: flex;
+      align-items: center; 
+      gap: 10px;
+    }
+    ul li {
+      padding: 8px;
+      border-bottom: 1px solid #eee;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    ul li:hover {
+      background-color: #f5f5f5;
+    }
+
+    details[open] ul {
+      display: block;
+    }
+
+    details ul {
+      display: none;
+    }
