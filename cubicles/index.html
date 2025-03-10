@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.mini-form {
+    position: absolute;
+    width: 250px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    font-family: Arial, sans-serif;
+}
+
+.mini-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.mini-header .close-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.mini-content table {
+    width: 100%;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.mini-content td {
+    padding: 4px 0;
+}
+
+.mini-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.mini-actions .view-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mini-actions .edit-btn {
+    background: #f39c12;
+    color: #fff;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+</style>
+
+<body>
+    <div id="miniForm" class="mini-form">
+        <div class="mini-header">
+            <span id="cubicleTitle">Cubicle #123</span>
+            <button class="close-btn" onclick="closeMiniForm()">✖</button>
+        </div>
+        <div class="mini-content">
+            <table>
+                <tr>
+                    <td>CPU S/N:</td>
+                    <td id="cpuSr">N/A</td>
+                </tr>
+                <tr>
+                    <td>Monitor 1 S/N:</td>
+                    <td id="monitor1Sr">N/A</td>
+                </tr>
+                <tr>
+                    <td>Monitor 2 S/N:</td>
+                    <td id="monitor2Sr">N/A</td>
+                </tr>
+                <tr>
+                    <td>Cisco S/N:</td>
+                    <td id="ciscoSr">N/A</td>
+                </tr>
+            </table>
+        </div>
+        <div class="mini-actions">
+            <button class="view-btn">View</button>
+            <button class="edit-btn">Edit</button>
+        </div>
+    </div>
+</body>
+<script>
+</script>
+
+</html>

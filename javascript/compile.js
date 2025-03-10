@@ -1,4 +1,4 @@
-fetch('rightMidDiv.html')
+fetch('cubicles/rightMidDiv.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -14,7 +14,7 @@ fetch('rightMidDiv.html')
         });
     });
 
-fetch('rightTop.html')
+fetch('cubicles/rightTop.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -30,7 +30,7 @@ fetch('rightTop.html')
         });
     });
 
-fetch('middleLeft.html')
+fetch('cubicles/middleLeft.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -47,7 +47,7 @@ fetch('middleLeft.html')
     });
 
 
-fetch('button.html')
+fetch('cubicles/button.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -63,7 +63,7 @@ fetch('button.html')
         });
     });
 
-fetch('middleBot.html')
+fetch('cubicles/middleBot.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -79,7 +79,7 @@ fetch('middleBot.html')
         });
     });
 
-fetch('rightBot.html')
+fetch('cubicles/rightBot.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -102,3 +102,10 @@ fetch('saveData.php')
         container.innerHTML = data;
         document.getElementById('formed').appendChild(container);
     });
+
+
+function toggleLegend() {
+        var legend = document.getElementById("legendContent");
+        legend.style.display = (legend.style.display === "none" || legend.style.display === "") ? "block" : "none";
+    }
+    

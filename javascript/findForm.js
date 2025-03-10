@@ -29,7 +29,7 @@ function findDevice() {
             const cubicleBtn = document.querySelector(`button[value='${data.cubicleNumber}']`);
             
             if (cubicleBtn) {
-                cubicleBtn.style.backgroundColor = "green"; // Change button color
+                cubicleBtn.style.backgroundColor = "darkred"; // Change button color
                 cubicleBtn.style.color = "white"; // Adjust text color
             } else {
                 alert("No matching button found for this cubicle.");

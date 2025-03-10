@@ -20,7 +20,7 @@ header('Content-Disposition: attachment;filename="eatna_18f_data.csv"');
 $output = fopen('php://output', 'w');
 
 // Write the column headers (replace with your actual column names)
-fputcsv($output, ['ID', 'Cubicle Number', 'CPU Serial', 'Monitor 1 Serial', 'Monitor 2 Serial', 'Cisco Serial']);
+fputcsv($output, ['ID', 'Cubicle Number', 'CPU Serial', 'Monitor 1 Serial', 'Monitor 2 Serial', 'Cisco Serial', 'Account']);
 
 // Write the data rows
 while ($data = $result->fetch_assoc()) {
@@ -31,7 +31,8 @@ while ($data = $result->fetch_assoc()) {
         $data['cpu_sr'],
         $data['monitor1_sr'],
         $data['monitor2_sr'],
-        $data['cisco_sr']
+        $data['cisco_sr'],
+        'Eatna'
     ]);
 }
 

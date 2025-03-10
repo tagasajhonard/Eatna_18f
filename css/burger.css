@@ -4,11 +4,15 @@ details {
       left: 20px;
       padding: 10px;
       background-color: #fff;
-     
       border-radius: 8px;
-      box-shadow: 0 4px 6px gray;
+      box-shadow: 0 4px 6px lightgray;
       width: 190px;
     
+    }
+    details:hover{
+      transition: .3s ease;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 6px gray;
     }
 
     summary {
@@ -104,4 +108,40 @@ details {
 
     details ul {
       display: none;
+    }
+
+    .Mbtn{
+      margin: 2px;
+      height: 25px;
+      width: 25px;
+      border-radius: 3px;
+      text-align: center;
+      background-color: #69b41E;
+      border: none;
+      outline: none;
+      box-shadow: 2px 2px 3px gray;
+    }
+    .chkBtn{
+      margin: 2px;
+      height: 25px;
+      width: 25px;
+      border-radius: 3px;
+      text-align: center;
+      background-color: #f39c12;
+      color: #fff;
+      border: none;
+      outline: none;
+      box-shadow: 2px 2px 3px gray;
+    }
+    .redBtn{
+      margin: 2px;
+      height: 25px;
+      width: 25px;
+      border-radius: 3px;
+      text-align: center;
+      background-color: darkred;
+      color: #fff;
+      border: none;
+      outline: none;
+      box-shadow: 2px 2px 3px gray;
     }

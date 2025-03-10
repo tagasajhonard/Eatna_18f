@@ -27,6 +27,7 @@
     </form>
 </div>
 
+<div id="messageContainer"></div>
 
 <div id="overlay"></div>
 

@@ -6,33 +6,22 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/miniForm.css">
     <link rel="stylesheet" href="css/findForm.css">
+    <link rel="stylesheet" href="css/editForm.css">
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="css/burger.css">
 
     <script src="javascript/compile.js"></script>
     <script src="javascript/form.js"></script>
 
+    <link rel="icon" type="image/png" href="image/logo.png">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <style type="text/css">
-    .mini-form {
-    display: none;
-    position: absolute;
-    background: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    z-index: 1000;
-}
-
-.mini-form button {
-    display: block;
-    width: 100%;
-    margin-top: 5px;
-}
+    
 
 </style>
 <body>
@@ -47,11 +36,22 @@
             </span>
         </summary>
         <ul>
-            <li><img src="image/table.png" class="icon"> Table</li>
+            <!-- <li><img src="image/table.png" class="icon"> Table</li> -->
             <li id="findLi"><img src="image/find.png" class="icon">Find</li>
-            <li id="downloadBtn"><img src="image/database.png" class="icon">DB backup</li>
+            <!-- <li><img src="image/convert.png" class="icon"> Switch Unit</li> -->
+            <li id="downloadBtn"><img src="image/database.png" class="icon">DB Backup</li>
             <li id="downloadBtn" onclick="window.location.href='connection/export_to_csv.php'"><img src="image/xls.png" class="icon">Download Excel</li>
+
+            <li class="legend-toggle" onclick="toggleLegend()">
+                <img src="image/map-legend.png" class="icon"> Legends
+            </li>
+
         </ul>
+        <div id="legendContent" class="legend-box" style="display: none;">
+            <p><div class="Mbtn">M</div> Available Cubicle</p>
+            <p><div class="chkBtn">✔</div> Occupied Cubicle</p>
+            <p><div class="redBtn">✔</div> Searched Cubicle</p>
+        </div>
     </details>
 
     <div id="overlays" style="display: none;"></div>
@@ -91,15 +91,82 @@
     
     <div id="formed"></div>
 
+<div id="miniForm" class="mini-form">
+    <div class="mini-header">
+        <span id="cubicleTitle">Details</span>
+        <button class="close-btn" onclick="closeMiniForm()">✖</button>
+    </div>
+    <div class="mini-content">
+        <div class="mini-row">
+            <span class="mini-label">Cubicle Number:</span>
+            <span id="miniCubicleNumber" class="mini-value">N/A</span>
+        </div>
+        <div class="mini-row">
+            <span class="mini-label">CPU S/N:</span>
+            <span id="miniCpuSr" class="mini-value">N/A</span>
+        </div>
+        <div class="mini-row">
+            <span class="mini-label">Monitor 1 S/N:</span>
+            <span id="miniMonitor1" class="mini-value">N/A</span>
+        </div>
+        <div class="mini-row">
+            <span class="mini-label">Monitor 2 S/N:</span>
+            <span id="miniMonitor2" class="mini-value">N/A</span>
+        </div>
+        <div class="mini-row">
+            <span class="mini-label">Cisco S/N:</span>
+            <span id="miniCisco" class="mini-value">N/A</span>
+        </div>
+    </div>
+    <div class="mini-actions">
+        <button class="edit-btn" onclick="openEditForm()">Update</button>
+    </div>
+</div>
+
+<div id="editOverlay" class="over"></div>
+
+<div id="editForm" class="edit-form" style="display: none;">
+    <div class="mini-header">
+        <span>Update Details</span>
+        <button class="close-btn" onclick="closeEditForm()">✖</button>
+    </div>
+    <div class="mini-content">
+        <div class="mini-rows">
+            <label class="mini-label">Cubicle Number:</label>
+            <input type="text" id="editCubicleNumber" readonly>
+        </div>
+        <div class="mini-rows">
+            <label class="mini-label">CPU S/N:</label>
+            <input type="text" id="editCpuSr">
+        </div>
+        <div class="mini-rows">
+            <label class="mini-label">Monitor 1 S/N:</label>
+            <input type="text" id="editMonitor1">
+        </div>
+        <div class="mini-rows">
+            <label class="mini-label">Monitor 2 S/N:</label>
+            <input type="text" id="editMonitor2">
+        </div>
+        <div class="mini-rows">
+            <label class="mini-label">Cisco S/N:</label>
+            <input type="text" id="editCisco">
+        </div>
+    </div>
+    <div class="mini-actions">
+        <button class="save-btn" onclick="saveEditDetails()">Save</button>
+    </div>
+</div>
 </body>
 
 <script>
     document.getElementById('downloadBtn').addEventListener('click', function() {
         window.location.href = 'connection/download_backup.php';
     });
+    
 </script>
 <script src="javascript/findForm.js"></script>
 <script src="javascript/check.js"></script>
+<script src="javascript/editForm.js"></script>
 <script type="text/javascript">
 
 </script>
