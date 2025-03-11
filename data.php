@@ -14,6 +14,28 @@ if (isset($_POST['submit'])) {
     $monitor2SerialNumber = $_POST['monitor2SerialNumber'];
     $ciscoSerialNumber = $_POST['ciscoSerialNumber'];
 
+    if ($monitor1SerialNumber === $monitor2SerialNumber) {
+        echo "<div class='error-card'>
+                <p>Error: Monitor 1 serial number is the same as Monitor 2 serial number</p>
+                <p id='timer'>Redirecting in 3 seconds...</p>
+              </div>
+              <script>
+                var timeLeft = 3;
+                var timerElement = document.getElementById('timer');
+
+                var countdown = setInterval(function() {
+                    timeLeft--;
+                    timerElement.textContent = 'Redirecting in ' + timeLeft + ' seconds...';
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(countdown);
+                        window.location.href = 'table.php'; 
+                    }
+                }, 1000);
+              </script>";
+        exit(); // Stop further execution
+    }
+
     // Check if the serial numbers already exist in the table
     $checkSql = "SELECT * FROM eatna_18f WHERE 
                  cpu_sr = '{$cpuSerialNumber}' OR 
@@ -44,8 +66,8 @@ if (isset($_POST['submit'])) {
                   </script>";;
     } else {
         // Insert the new record if no duplicates are found
-        $sql = "INSERT INTO eatna_18f (cubicle_number, cpu_sr, monitor1_sr, monitor2_sr, cisco_sr) 
-                VALUES ('{$id}', '{$cpuSerialNumber}', '{$monitor1SerialNumber}', '{$monitor2SerialNumber}', '{$ciscoSerialNumber}')";
+        $sql = "INSERT INTO eatna_18f (cubicle_number, cpu_sr, monitor1_sr, monitor2_sr, cisco_sr, status) 
+                VALUES ('{$id}', '{$cpuSerialNumber}', '{$monitor1SerialNumber}', '{$monitor2SerialNumber}', '{$ciscoSerialNumber}', 'Occupied')";
 
         if ($conn->query($sql) === TRUE) {
             echo "<div class='success-card'>

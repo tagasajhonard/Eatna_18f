@@ -108,4 +108,18 @@ function toggleLegend() {
         var legend = document.getElementById("legendContent");
         legend.style.display = (legend.style.display === "none" || legend.style.display === "") ? "block" : "none";
     }
-    
+
+function toggleFloor() {
+        var legend = document.getElementById("floorContent");
+        legend.style.display = (legend.style.display === "none" || legend.style.display === "") ? "block" : "none";
+    }
+function toggleActions() {
+        var legend = document.getElementById("actionContent");
+        legend.style.display = (legend.style.display === "none" || legend.style.display === "") ? "block" : "none";
+    }
+document.addEventListener("click", function (event) {
+    const details = document.querySelector("details");
+    if (details && details.hasAttribute("open") && !details.contains(event.target)) {
+        details.removeAttribute("open");
+    }
+});
