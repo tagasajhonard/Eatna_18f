@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="css/burger.css">
 
-    <script src="javascript/compile.js"></script>
+    <script src="javascript/18f_compile.js"></script>
     <script src="javascript/form.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -175,7 +175,7 @@
         </form>
     </div>
 
-    <table>
+    <table id="18floor">
         <tr>
             <td colspan="2"></td>
             <td id="top"></td>

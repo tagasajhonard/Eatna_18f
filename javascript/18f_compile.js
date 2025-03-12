@@ -1,4 +1,4 @@
-fetch('cubicles/rightMidDiv.html')
+fetch('18f_cubicles/rightMidDiv.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -14,7 +14,7 @@ fetch('cubicles/rightMidDiv.html')
         });
     });
 
-fetch('cubicles/rightTop.html')
+fetch('18f_cubicles/rightTop.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -30,7 +30,7 @@ fetch('cubicles/rightTop.html')
         });
     });
 
-fetch('cubicles/middleLeft.html')
+fetch('18f_cubicles/middleLeft.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -47,7 +47,7 @@ fetch('cubicles/middleLeft.html')
     });
 
 
-fetch('cubicles/button.html')
+fetch('18f_cubicles/button.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -63,7 +63,7 @@ fetch('cubicles/button.html')
         });
     });
 
-fetch('cubicles/middleBot.html')
+fetch('18f_cubicles/middleBot.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
@@ -79,7 +79,7 @@ fetch('cubicles/middleBot.html')
         });
     });
 
-fetch('cubicles/rightBot.html')
+fetch('18f_cubicles/rightBot.html')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
