@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
             occupiedCubicles.forEach(cubicle => {
                 let button = document.querySelector(`button[value="${cubicle}"]`);
                 if (button) {
-                    button.innerText = "✔"; // Mark cubicle as occupied
+                    button.innerText = "✔";
                     button.style.backgroundColor = "#f39c12";
                     button.style.color = "#fff";
 
@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => console.error("Error fetching cubicle data:", error));
 
-    // Check if URL already has a cubicle number and show mini form
     const urlParams = new URLSearchParams(window.location.search);
     const cubicleFromURL = urlParams.get("cubicle");
     if (cubicleFromURL) {
@@ -27,37 +26,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// Function to update the URL without refreshing the page
+
+
 function updateURL(cubicleNumber) {
     const newURL = `${window.location.pathname}?cubicle=${cubicleNumber}`;
     history.pushState({ cubicle: cubicleNumber }, "", newURL);
 }
 
-// Function to show the mini form
 function showMiniForm(event, cubicleNumber) {
     let miniForm = document.getElementById("miniForm");
     if (!miniForm) return;
 
-    // First, display the miniForm to get its dimensions
     miniForm.style.display = "block";
 
-    // Get form dimensions
+
     let formWidth = miniForm.offsetWidth;
     let formHeight = miniForm.offsetHeight;
 
-    // Calculate the centered position based on cursor location
     let posX = event.clientX;
     let posY = event.clientY - formHeight / 2;
 
-    // Set position
     miniForm.style.top = `${posY}px`;
     miniForm.style.left = `${posX}px`;
 
-    // Fetch and display cubicle data
     fetchCubicleData(cubicleNumber);
 }
 
-// Function to show mini form when page is loaded with a cubicle in URL
 function showMiniFormFromURL(cubicleNumber) {
     let miniForm = document.getElementById("miniForm");
     if (!miniForm) return;
@@ -80,15 +74,13 @@ function fetchCubicleData(cubicleNumber) {
         .catch(error => console.error("Error fetching cubicle details:", error));
 }
 
-// Function to close the mini form and reset URL
 function closeMiniForm() {
     document.getElementById("miniForm").style.display = "none";
-    history.pushState({}, "", window.location.pathname); // Remove cubicle from URL
+    history.pushState({}, "", window.location.pathname);
 }
 function openForm(buttonValue) {
     let button = document.querySelector(`button[value="${buttonValue}"]`);
 
-    // Check if button contains "✔" (occupied), prevent opening the form
     if (button && button.innerText.trim() === "✔") {
         return; // Do nothing
     }

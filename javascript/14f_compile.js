@@ -1,4 +1,4 @@
-const files = ['a', 'b', 'c', 'e'];
+const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 
 files.forEach(file => {
   fetch(`14f_cubicles/${file}.html`)

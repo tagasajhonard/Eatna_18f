@@ -95,12 +95,29 @@ fetch('18f_cubicles/rightBot.html')
         });
     });
 
+
 fetch('saveData.php')
     .then(response => response.text())
     .then(data => {
         const container = document.createElement('div');
         container.innerHTML = data;
         document.getElementById('formed').appendChild(container);
+    });
+
+fetch('miniForm.php')
+    .then(response => response.text())
+    .then(data => {
+        const container = document.createElement('div');
+        container.innerHTML = data;
+        document.getElementById('miniForm').appendChild(container);
+    });
+
+fetch('editForm.php')
+    .then(response => response.text())
+    .then(data => {
+        const container = document.createElement('div');
+        container.innerHTML = data;
+        document.getElementById('editForm').appendChild(container);
     });
 
 

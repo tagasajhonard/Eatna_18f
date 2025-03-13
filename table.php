@@ -13,10 +13,6 @@
     <link rel="stylesheet" href="css/card.css">
     <link rel="stylesheet" href="css/burger.css">
 
-    <script src="javascript/18f_compile.js"></script>
-    <script src="javascript/form.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
     <link rel="icon" type="image/png" href="image/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -54,13 +50,13 @@
             </li>
 
             <div id="floorContent" class="legend-box" style="display: none;">
-                <li class="floor-btn">11th Floor</li>
-                <li class="floor-btn">12th Floor</li>
-                <li class="floor-btn">14th Floor</li>
-                <li class="floor-btn">15th Floor</li>
-                <li class="floor-btn">16th Floor</li>
-                <li class="floor-btn">17th Floor</li>
-                <li class="floor-btn">18th Floor</li>
+                <li class="floor-btn" data-floor="11">11th Floor</li>
+                <li class="floor-btn" data-floor="12">12th Floor</li>
+                <li class="floor-btn" data-floor="14">14th Floor</li>
+                <li class="floor-btn" data-floor="15">15th Floor</li>
+                <li class="floor-btn" data-floor="16">16th Floor</li>
+                <li class="floor-btn" data-floor="17">17th Floor</li>
+                <li class="floor-btn" data-floor="18">18th Floor</li>
             </div>
 
             <li class="legend-toggle" onclick="toggleLegend()">
@@ -80,6 +76,7 @@
     </details>
 
     <div id="switch-overlay" style="display: none;"></div>
+
     <div id="switchForm" class="switch-form" style="display: none;">
 
         <h4>What would you like to switch?</h4>
@@ -175,7 +172,31 @@
         </form>
     </div>
 
-    <table id="18floor">
+    
+
+    <div id="selectMessage" style="text-align: center; margin-top: 20vh; font-size: 24px; font-weight: bold;">
+        Please select a floor first.
+    </div>
+
+    <table id="table_14" style="display: none;">
+        <tr>
+            <td id="a" style="width: auto;">a</td>
+        </tr>
+        <tr>
+            <td id="b">b</td>
+        </tr>
+        <tr>
+            <td id="c" colspan="2">c</td>
+            <td id="d">d</td>
+        </tr>
+        <tr>
+            <td id="e">e</td>
+            <td id="f">f</td>
+            <td id="g">g</td>
+        </tr>
+    </table>
+
+    <table id="table_18" style="display: none;">
         <tr>
             <td colspan="2"></td>
             <td id="top"></td>
@@ -192,73 +213,14 @@
         </tr>
     </table>
 
+
     <div id="formed"></div>
 
-    <div id="miniForm" class="mini-form">
-        <div class="mini-header">
-            <span id="cubicleTitle">Details</span>
-            <button class="close-btn" onclick="closeMiniForm()">✖</button>
-        </div>
-        <div class="mini-content">
-            <div class="mini-row">
-                <span class="mini-label">Cubicle Number:</span>
-                <span id="miniCubicleNumber" class="mini-value">N/A</span>
-            </div>
-            <div class="mini-row">
-                <span class="mini-label">CPU S/N:</span>
-                <span id="miniCpuSr" class="mini-value">N/A</span>
-            </div>
-            <div class="mini-row">
-                <span class="mini-label">Monitor 1 S/N:</span>
-                <span id="miniMonitor1" class="mini-value">N/A</span>
-            </div>
-            <div class="mini-row">
-                <span class="mini-label">Monitor 2 S/N:</span>
-                <span id="miniMonitor2" class="mini-value">N/A</span>
-            </div>
-            <div class="mini-row">
-                <span class="mini-label">Cisco S/N:</span>
-                <span id="miniCisco" class="mini-value">N/A</span>
-            </div>
-        </div>
-        <div class="mini-actions">
-            <button class="edit-btn" onclick="openEditForm()">Update</button>
-        </div>
-    </div>
+    <div id="miniForm" class="mini-form"></div>
 
     <div id="editOverlay" class="over"></div>
+    <div id="editForm" class="edit-form" style="display: none;"></div>
 
-    <div id="editForm" class="edit-form" style="display: none;">
-        <div class="mini-header">
-            <span>Update Details</span>
-            <button class="close-btn" onclick="closeEditForm()">✖</button>
-        </div>
-        <div class="mini-content">
-            <div class="mini-rows">
-                <label class="mini-label">Cubicle Number:</label>
-                <input type="text" id="editCubicleNumber" readonly>
-            </div>
-            <div class="mini-rows">
-                <label class="mini-label">CPU S/N:</label>
-                <input type="text" id="editCpuSr">
-            </div>
-            <div class="mini-rows">
-                <label class="mini-label">Monitor 1 S/N:</label>
-                <input type="text" id="editMonitor1">
-            </div>
-            <div class="mini-rows">
-                <label class="mini-label">Monitor 2 S/N:</label>
-                <input type="text" id="editMonitor2">
-            </div>
-            <div class="mini-rows">
-                <label class="mini-label">Cisco S/N:</label>
-                <input type="text" id="editCisco">
-            </div>
-        </div>
-        <div class="mini-actions">
-            <button class="save-btn" onclick="saveEditDetails()">Save</button>
-        </div>
-    </div>
 </body>
 
 <script>
@@ -271,6 +233,7 @@
 <script src="javascript/check.js"></script>
 <script src="javascript/editForm.js"></script>
 <script type="text/javascript">
+
     document.getElementById("switchUnit").addEventListener("click", function () {
         document.getElementById("switchForm").style.display = "block";
         document.getElementById("switch-overlay").style.display = "block";
@@ -283,7 +246,100 @@
 </script>
 <script src="javascript/optNum.js"></script>
 <script src="javascript/switching.js"></script>
-<script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+    const floorButtons = document.querySelectorAll(".floor-btn");
+    const selectMessage = document.getElementById("selectMessage");
+
+    floorButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const selectedFloor = this.getAttribute("data-floor");
+
+            // Update URL with the selected floor number
+            const url = new URL(window.location);
+            url.searchParams.set("floor", selectedFloor);
+            window.history.pushState({}, "", url);
+
+            // Hide all tables
+            document.querySelectorAll("table").forEach(table => {
+                table.style.display = "none";
+            });
+
+            // Hide the message
+            selectMessage.style.display = "none";
+
+            // Show the selected table
+            const selectedTable = document.getElementById(`table_${selectedFloor}`);
+            if (selectedTable) {
+                selectedTable.style.display = "table";
+            }
+
+            // Highlight the active floor
+            floorButtons.forEach(btn => btn.classList.remove("active-floor"));
+            this.classList.add("active-floor");
+        });
+    });
+
+    // Load floor from URL if available
+    const urlParams = new URLSearchParams(window.location.search);
+    const floorFromURL = urlParams.get("floor");
+    if (floorFromURL) {
+        const selectedTable = document.getElementById(`table_${floorFromURL}`);
+        if (selectedTable) {
+            selectedTable.style.display = "table";
+            selectMessage.style.display = "none";
+
+            const activeButton = document.querySelector(`.floor-btn[data-floor="${floorFromURL}"]`);
+            if (activeButton) {
+                activeButton.classList.add("active-floor");
+                }
+            }
+        }
+    });
 
 </script>
+
+    <script src="javascript/18f_compile.js"></script>
+    <script src="javascript/14f_compile.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const floorButtons = document.querySelectorAll(".floor-btn");
+
+    floorButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            const selectedFloor = this.getAttribute("data-floor");
+
+            // Update URL with floor number
+            const url = new URL(window.location);
+            url.searchParams.set("floor", selectedFloor);
+            window.history.pushState({}, "", url);
+
+            // Fetch data based on the selected floor
+            fetch(`get_cubicle_data.php?floor=${selectedFloor}`)
+                .then(response => response.json())
+                .then(occupiedCubicles => {
+                    // Reset buttons
+                    document.querySelectorAll("button[value]").forEach(btn => {
+                        btn.innerText = "M";
+                        btn.style.backgroundColor = ""; 
+                        btn.style.color = ""; 
+                    });
+
+                    // Mark occupied cubicles
+                    occupiedCubicles.forEach(cubicle => {
+                        let button = document.querySelector(`button[value="${cubicle}"]`);
+                        if (button) {
+                            button.innerText = "✔";
+                            button.style.backgroundColor = "#f39c12";
+                            button.style.color = "#fff";
+                        }
+                    });
+                })
+                .catch(error => console.error("Error fetching cubicle data:", error));
+        });
+    });
+});
+
+    </script>
 </html>
