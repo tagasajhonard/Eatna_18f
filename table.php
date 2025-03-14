@@ -230,7 +230,7 @@
 
 </script>
 <script src="javascript/findForm.js"></script>
-<script src="javascript/check.js"></script>
+
 <script src="javascript/editForm.js"></script>
 <script type="text/javascript">
 
@@ -247,99 +247,58 @@
 <script src="javascript/optNum.js"></script>
 <script src="javascript/switching.js"></script>
 <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
-    const floorButtons = document.querySelectorAll(".floor-btn");
-    const selectMessage = document.getElementById("selectMessage");
+    // document.addEventListener("DOMContentLoaded", function () {
+    // const floorButtons = document.querySelectorAll(".floor-btn");
+    // const selectMessage = document.getElementById("selectMessage");
 
-    floorButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            const selectedFloor = this.getAttribute("data-floor");
+    // floorButtons.forEach(button => {
+    //     button.addEventListener("click", function () {
+    //         const selectedFloor = this.getAttribute("data-floor");
 
-            // Update URL with the selected floor number
-            const url = new URL(window.location);
-            url.searchParams.set("floor", selectedFloor);
-            window.history.pushState({}, "", url);
+    //         // Update URL with the selected floor number
+    //         const url = new URL(window.location);
+    //         url.searchParams.set("floor", selectedFloor);
+    //         window.history.pushState({}, "", url);
 
-            // Hide all tables
-            document.querySelectorAll("table").forEach(table => {
-                table.style.display = "none";
-            });
+    //         // Hide all tables
+    //         document.querySelectorAll("table").forEach(table => {
+    //             table.style.display = "none";
+    //         });
 
-            // Hide the message
-            selectMessage.style.display = "none";
+    //         // Hide the message
+    //         selectMessage.style.display = "none";
 
-            // Show the selected table
-            const selectedTable = document.getElementById(`table_${selectedFloor}`);
-            if (selectedTable) {
-                selectedTable.style.display = "table";
-            }
+    //         // Show the selected table
+    //         const selectedTable = document.getElementById(`table_${selectedFloor}`);
+    //         if (selectedTable) {
+    //             selectedTable.style.display = "table";
+    //         }
 
-            // Highlight the active floor
-            floorButtons.forEach(btn => btn.classList.remove("active-floor"));
-            this.classList.add("active-floor");
-        });
-    });
+    //         // Highlight the active floor
+    //         floorButtons.forEach(btn => btn.classList.remove("active-floor"));
+    //         this.classList.add("active-floor");
+    //     });
+    // });
 
-    // Load floor from URL if available
-    const urlParams = new URLSearchParams(window.location.search);
-    const floorFromURL = urlParams.get("floor");
-    if (floorFromURL) {
-        const selectedTable = document.getElementById(`table_${floorFromURL}`);
-        if (selectedTable) {
-            selectedTable.style.display = "table";
-            selectMessage.style.display = "none";
+    // // Load floor from URL if available
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const floorFromURL = urlParams.get("floor");
+    // if (floorFromURL) {
+    //     const selectedTable = document.getElementById(`table_${floorFromURL}`);
+    //     if (selectedTable) {
+    //         selectedTable.style.display = "table";
+    //         selectMessage.style.display = "none";
 
-            const activeButton = document.querySelector(`.floor-btn[data-floor="${floorFromURL}"]`);
-            if (activeButton) {
-                activeButton.classList.add("active-floor");
-                }
-            }
-        }
-    });
+    //         const activeButton = document.querySelector(`.floor-btn[data-floor="${floorFromURL}"]`);
+    //         if (activeButton) {
+    //             activeButton.classList.add("active-floor");
+    //             }
+    //         }
+    //     }
+    // });
 
 </script>
-
+    <script src="javascript/check.js"></script>
     <script src="javascript/18f_compile.js"></script>
     <script src="javascript/14f_compile.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const floorButtons = document.querySelectorAll(".floor-btn");
-
-    floorButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            const selectedFloor = this.getAttribute("data-floor");
-
-            // Update URL with floor number
-            const url = new URL(window.location);
-            url.searchParams.set("floor", selectedFloor);
-            window.history.pushState({}, "", url);
-
-            // Fetch data based on the selected floor
-            fetch(`get_cubicle_data.php?floor=${selectedFloor}`)
-                .then(response => response.json())
-                .then(occupiedCubicles => {
-                    // Reset buttons
-                    document.querySelectorAll("button[value]").forEach(btn => {
-                        btn.innerText = "M";
-                        btn.style.backgroundColor = ""; 
-                        btn.style.color = ""; 
-                    });
-
-                    // Mark occupied cubicles
-                    occupiedCubicles.forEach(cubicle => {
-                        let button = document.querySelector(`button[value="${cubicle}"]`);
-                        if (button) {
-                            button.innerText = "✔";
-                            button.style.backgroundColor = "#f39c12";
-                            button.style.color = "#fff";
-                        }
-                    });
-                })
-                .catch(error => console.error("Error fetching cubicle data:", error));
-        });
-    });
-});
-
-    </script>
 </html>
