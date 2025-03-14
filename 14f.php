@@ -9,31 +9,31 @@
 </head>
 <style type="text/css">
 	td{
-		border: 2px solid gray;
+/*		border: 2px solid gray;*/
 		padding: 20px;
+		vertical-align: bottom;
 	}
 	table{
-		border: 2px solid gray;
-		border-collapse: collapse;
-
+/*		border: 2px solid gray;
+		border-collapse: collapse;*/
 	}
 </style>
 <body>
 	<table>
 		<tr>
-			<td id="a">a</td>
+			<td id="a" style="width: auto;">a</td>
 		</tr>
 		<tr>
 			<td id="b">b</td>
 		</tr>
 		<tr>
 			<td id="c" colspan="2">c</td>
-			<td>d</td>
+			<td id="d">d</td>
 		</tr>
 		<tr>
 			<td id="e">e</td>
-			<td>f</td>
-			<td>g</td>
+			<td id="f">f</td>
+			<td id="g">g</td>
 		</tr>
 	</table>
 </body>

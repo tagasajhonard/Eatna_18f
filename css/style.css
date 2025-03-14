@@ -61,7 +61,7 @@ button:hover{
 }
 
 table {
-    width: 120vw;
+    width: 110vw;
     height: 95vh;
     margin: 10px;
     padding: 20px;
@@ -70,3 +70,11 @@ table {
 .inner1{
     margin-right: 15px;
 }
+
+.active-floor {
+        background-color: #4CAF50; /* Green highlight */
+        color: #fff;
+        border-radius: 5px;
+        padding: 5px 10px;
+        font-weight: bold;
+    }
